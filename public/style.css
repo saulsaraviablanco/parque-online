@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #a9e8a9;
+  font-family: sans-serif;
+}
+
+#gameCanvas {
+  background: url('https://i.imgur.com/OaDkaYH.png') center/cover no-repeat;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+#chat {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+}
+
+#chat input {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#chat button {
+  margin-left: 5px;
+  background: #5cc95c;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
