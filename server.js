@@ -1,10 +1,20 @@
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
+import cors from "cors";
 
 const app = express();
+app.use(cors({
+  origin: ["https://precisemindsolutions.com", "https://www.precisemindsolutions.com"],
+  methods: ["GET", "POST"]
+}));
 const server = createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: ["https://precisemindsolutions.com", "https://www.precisemindsolutions.com"],
+    methods: ["GET", "POST"]
+  }
+});
 const players = {};
 
 app.use(express.static("public"));
