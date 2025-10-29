@@ -22,10 +22,10 @@ app.use(express.static("public"));
 io.on("connection", (socket) => {
   console.log("Jugador conectado:", socket.id);
 
-  socket.on("join", (name) => {
-    players[socket.id] = { name, x: 100, y: 100 };
-    io.emit("playersUpdate", players);
-  });
+socket.on("join", (data) => {
+  players[socket.id] = { name: data.name, x: data.x, y: data.y };
+  io.emit("playersUpdate", players);
+});
 
   socket.on("move", (pos) => {
     if (players[socket.id]) {
@@ -35,11 +35,9 @@ io.on("connection", (socket) => {
     }
   });
 
-  socket.on("message", (text) => {
-    if (players[socket.id]) {
-      io.emit("bubble", { id: socket.id, text });
-    }
-  });
+  socket.on("message", (data) => {
+  io.emit("bubble", { id: socket.id, text: data.text, name: data.name });
+});
 
   socket.on("disconnect", () => {
     delete players[socket.id];
